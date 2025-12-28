@@ -39,11 +39,13 @@ function [Zcz, m, n, code] = zcz_code_L_M(L, M)
 
 %Control
 if (log2(L) ~= int8(log2(L)))
+    disp('L must be a power of 2');
     disp('L debe ser una potencia de 2');
     Zcz = 0; code = 0;
     return;
 end
 if (log2(M) ~= int8(log2(M)))
+    disp('M must be a power of 2');
     disp('M debe ser una potencia de 2');
     Zcz = 0; code = 0;
     return;
@@ -55,6 +57,7 @@ m = log2(L) - 2*n - 1;
 
 %Control
 if (m < 0)
+    disp('m < 0. M cannot be so high');
     disp('m < 0. No es posible este valor tan alto de M');
     Zcz = 0; code = 0;
     return;
@@ -66,7 +69,8 @@ end
 
 %Control
 if (Mrecalculado ~= M)
-    dist('Error en el calculo de comprobacion de M');
+    dist('Error when checking out M');
+    dist('Error en el calculo de comprobacion de M');   
 end
 
 end

@@ -40,6 +40,7 @@ function [code, M, Zcz] = zcz_code(m, n)
 
 % By Pablo Torio. 2016 a 2021
 
+%From parameter m, calculate the starter
 %Calculo del starter, a partir del parametro m
 xy0 = [1, 1];
 xy = xy0;
@@ -55,10 +56,13 @@ F0(1, 1, :) = -xy(:, 1);
 F0(1, 2, :) = xy(:, 2);
 F0(2, 1, :) = -flipud(xy(:, 2));
 F0(2, 2, :) = -flipud(xy(:, 1));
+%From parameter m, calculate the code matrix
 %Calculo de la matriz code, a partir del parametro n
 F = F0;
+%Rows
 %Numero de filas
 rows = size(F, 1);
+%Third dimension length
 %Longitud de la tercera dimension
 depth = size(F, 3);
 for ctr = 1 : n
@@ -86,6 +90,7 @@ for ctr = 1 : n
     rows = rows * 2;
     depth = depth * 2;  
 end
+%F from 3 to 2 dimensions
 %sintetizar la matriz code, pasando F de tres a dos dimensiones
 cols = rows;
 code = zeros(rows, cols*depth);

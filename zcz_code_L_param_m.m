@@ -39,6 +39,7 @@ function [M, Zcz, n, code] = zcz_code_L_param_m(L, m)
 
 %Control
 if (log2(L) ~= int8(log2(L)))
+    disp('L must be a power of 2');
     disp('L debe ser una potencia de 2');
     M = 0; Zcz = 0; code = 0;
     return;
@@ -49,6 +50,7 @@ n = 0.5 * (log2(L) - m - 1);
 
 %Control
 if (n ~= int8(n))
+    disp('log2(L) - m must be an odd number');
     disp('log2(L) - m debe ser un numero impar');
     M = 0; Zcz = 0; code = 0;
     return;

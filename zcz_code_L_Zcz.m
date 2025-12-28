@@ -37,11 +37,13 @@ function [M, m, n, code] = zcz_code_L_Zcz(L, Zcz)
 % By Pablo Torio. 2021
 
 if (log2(L) ~= int8(log2(L)))
+    disp('L must be a power of 2');
     disp('L debe ser una potencia de 2');
     M = 0; code = 0;
     return;
 end
 if (log2(Zcz - 1) ~= int8(log2(Zcz - 1)))
+    disp('Zcz must be a power of 2 plus one');
     disp('Zcz debe ser una potencia de 2 mas uno');
     M = 0; code = 0;
     return;
@@ -53,12 +55,14 @@ m = log2(Zcz - 1) - n;
 
 %Control
 if (m < 0)
+    disp('m < 0. Zcz cannot be so high');
     disp('m < 0. No es posible este valor tan alto de Zcz');
     M = 0; code = 0;
     return;
 end
 
 if (n < 0)
+    disp('n < 0. Zcz cannot be so high');
     disp('n < 0. No es posible este valor tan alto de Zcz');
     M = 0; code = 0;
     return;
@@ -71,6 +75,7 @@ end
 
 %Control
 if (ZczRecalculado ~= Zcz)
+    dist('Error when checking out M');
     dist('Error en el calculo de comprobacion de Zcz');
 end
 

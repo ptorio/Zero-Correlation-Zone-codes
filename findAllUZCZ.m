@@ -37,6 +37,7 @@ function sequenceArray = findAllUZCZ(L, UZCZ)
 
 % Pablo Torio. 2021
 
+%Mask
 %Mascara
 vectorVacio = zeros(1, L);
 mascaraAutocorr = zeros(1, L);
@@ -47,30 +48,30 @@ numCombinaciones = 2^L - 1;
 sequenceArray = zeros(L/4, L, 4*L);
 encontradosPrincipal = 0;
 for ctr1 = 1 : numCombinaciones
+    %Convert ctr1 to binary
     %Convertir ctr1 a binario
     code = de2bi(ctr1);
     code1 = vectorVacio;
     code1(1:length(code)) = code;
+    % Convert sequences so as zeros are -1
     % Convertir las secuencias, de manera que los ceros sean -1
     code1 = 2 * code1 - 1;
     autocorr = period_corr(code1, code1);
     comprobarUZCZ = mascaraAutocorr .* autocorr;
     if (not(any(comprobarUZCZ)))
+        %This code can be
         %Este codigo puede ser
         encontradosPrincipal = encontradosPrincipal + 1;
         sequenceArray(1, :, encontradosPrincipal) = code1;
-        %disp('encontrado principal');%%%%%%
         disp(ctr1);%%%%%%%%%%%%%
-        %disp(code1);%%%%%%%%
         encontradosAmigos = 1;
         for ctr2 = ctr1+1 : numCombinaciones
-%             if (ctr2 == ctr1)
-%                 continue;
-%             end
+            %Convert ctr2 to binary
             %Convertir ctr2 a binario
             code = de2bi(ctr2);
             code2 = vectorVacio;
             code2(1:length(code)) = code; 
+            % Convert sequences so as zeros are -1
             % Convertir las secuencias, de manera que los ceros sean -1
             code2 = 2 * code2 - 1;
             
@@ -92,10 +93,7 @@ for ctr1 = 1 : numCombinaciones
             if (ctrAmigos >= encontradosAmigos)
                 encontradosAmigos = encontradosAmigos + 1;
                 sequenceArray(encontradosAmigos, :, ...
-                    encontradosPrincipal) = code2;
-                %disp('encontrado amigo');%%%%%%
-                %disp(code2);%%%%%%%%
-               
+                    encontradosPrincipal) = code2;           
             end
         end
     end
