@@ -34,7 +34,16 @@ function [M, m, n, code] = zcz_code_L_Zcz(L, Zcz)
 % Zcz = 2^(n+m) + 1 es el numero de ceros entorno al centro de cualquier correlacion que se haga. Es la longitud de la zona de correlacion cero
 %Necesita utilizar la funcion zcz_code(m,n)
 
-% By Pablo Torio. 2021
+% Copyright 2021, Pablo Torío (ORCID: 0000-0001-7934-3345)
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+%    http://www.apache.org/licenses/LICENSE-2.0
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
 
 if (log2(L) ~= int8(log2(L)))
     disp('L must be a power of 2');
